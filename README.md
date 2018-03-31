@@ -5,7 +5,7 @@ I made this really quick to get my bachelor degree (and had to present on 04/12/
 
 There she is: 
 
-![DataGlove on the table](https://goo.gl/4FZcST)
+[DataGlove on the table](https://goo.gl/4FZcST)
 
 ## Hardware
 
