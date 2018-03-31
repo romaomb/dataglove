@@ -3,9 +3,11 @@ This is where the fun begins!
 
 I made this really quick to get my bachelor degree (and had to present on 04/12/2017), but now I am really looking to improve my little child.
 
+(I'm going to write a better description here, asap)
+
 There she is: 
 
-![DataGlove on the table](https://goo.gl/4FZcST)
+![DataGlove on the table](https://image.ibb.co/cK4sjn/Data_Glove.jpg)
 
 ## Hardware
 
