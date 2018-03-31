@@ -27,7 +27,7 @@ Yeah, I chose to make this on Python and I don't regreat!
 
 ## Client-side (not frontend): JAVA Android
 
-Did on JAVA for Android and now I DO REGREAT IT a lot. (Thank God we have Kotlin) 
+Did on JAVA for Android and now I DO REGREAT IT a lot.
 
 * Volley to get data
 * Rajawali to make a 3D hand skeleton model
