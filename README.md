@@ -1,4 +1,4 @@
-# DataGlove
+# DataGlove - Android
 This is where the fun begins!
 
 I made this really quick to get my bachelor degree (and had to present on 04/12/2017), but now I am really looking to improve my little child.
@@ -21,24 +21,14 @@ There she is:
 
 ## Backend: Python
 
-Yeah, I chose to make this on Python and I don't regreat!
-
 * SMBus to get sensor data
-* hostapd, dnsmasq and IPTABLES (HELL YEAH!) to set up the Raspberry as an Access Point
-* web.py to run the "server-side stuff" 
+* hostapd, dnsmasq and IPTABLES to set up the Raspberry Pi as an Access Point
+* Flask to run the "server-side stuff" 
 
-## Client-side (not frontend): JAVA Android
+## Mobile: Kotlin
 
-Did on JAVA for Android and now I DO REGREAT IT a lot.
-
-* Volley to get data
+* Retrofit 2 to get data
 * Rajawali to make a 3D hand skeleton model
 * A bunch of TextViews to make a table
-
-# On the road
-
-* Convert JAVA code to Kotlin
-* Fix some bugs
-* Improve speed
 
 Romão 
