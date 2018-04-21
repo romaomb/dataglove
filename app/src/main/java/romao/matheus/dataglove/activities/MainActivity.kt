@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setTabs() {
+        tabsVP.setSwipeable(false)
         tabsVP.adapter = TabAdapter(supportFragmentManager)
         tabLayout.setupWithViewPager(tabsVP)
 

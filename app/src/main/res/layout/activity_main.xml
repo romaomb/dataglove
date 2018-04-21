@@ -19,7 +19,7 @@
         app:tabMode="fixed"
         />
 
-    <android.support.v4.view.ViewPager
+    <romao.matheus.dataglove.view.CustomViewPager
         android:id="@+id/tabsVP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
