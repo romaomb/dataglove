@@ -114,12 +114,11 @@ class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Ren
 
     override fun onRender(ellapsedRealtime: Long, deltaTime: Double) {
         super.onRender(ellapsedRealtime, deltaTime)
-        if (SimulationFragment.sensor.size > 0) {
+        if (SimulationFragment.sensorList.sensors.isNotEmpty()) {
             for (i in 0..14) {
-                handJoints[i].setRotation(Vector3.Axis.X, -SimulationFragment.sensor[i].angle)
+                handJoints[i].setRotation(Vector3.Axis.X, -SimulationFragment.sensorList.sensors[i].angle)
             }
         }
-        //hand.setRotation(Vector3.Axis.X, angles[15]);
     }
 
     override fun onTouchEvent(event: MotionEvent) {}
