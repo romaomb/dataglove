@@ -32,8 +32,7 @@ class MainActivity : AppCompatActivity() {
                     item.isChecked = true
                     if (!SimulationFragment.keepTransmission) {
                         SimulationFragment.keepTransmission = true
-                        val fragment = supportFragmentManager.fragments[0] as SimulationFragment
-                        fragment.startRetrofitCall()
+                        SimulationFragment.client.sendMessage("")
                     }
                 }
                 return true
