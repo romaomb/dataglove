@@ -19,7 +19,7 @@ import romao.matheus.dataglove.utilities.RajawaliRenderer
 class SimulationFragment : Fragment() {
 
     companion object {
-        var transmission = true
+        var keepTransmission = false
         var sensor = ArrayList<Sensor.SensorData>()
     }
 
@@ -27,15 +27,23 @@ class SimulationFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val mFrameLayout = inflater.inflate(R.layout.fragment_simulation, container, false) as FrameLayout
-
         mFrameLayout.rajawaliSV.apply {
             setFrameRate(60.0)
             renderMode = ISurface.RENDERMODE_WHEN_DIRTY
             val renderer = RajawaliRenderer(context, this)
             setSurfaceRenderer(renderer)
         }
-
         return mFrameLayout
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        keepTransmission = true
+        startRetrofitCall()
+    }
+
+    fun startRetrofitCall() {
+        if (keepTransmission) getSensorData()
     }
 
     private fun getSensorData() {
@@ -53,7 +61,7 @@ class SimulationFragment : Fragment() {
                         TableFragment.tableList.forEachIndexed { index, it ->
                             it.text = sensor[index].angle.toString()
                         }
-                        if (transmission) getSensorData()
+                        if (keepTransmission) getSensorData()
                     } else {
                         showLog("Erro 2")
                     }

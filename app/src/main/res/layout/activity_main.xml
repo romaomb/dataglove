@@ -16,14 +16,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbarInclude"
-        app:tabMode="fixed"
-        />
+        android:background="@color/colorPrimary"
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabIndicatorColor="@android:color/darker_gray"
+        app:tabTextColor="@android:color/darker_gray"
+        app:tabMode="fixed" />
 
     <romao.matheus.dataglove.view.CustomViewPager
         android:id="@+id/tabsVP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabLayout"
-        />
+        android:layout_below="@+id/tabLayout" />
 
 </RelativeLayout>

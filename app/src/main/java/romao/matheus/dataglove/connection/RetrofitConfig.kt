@@ -1,7 +1,5 @@
 package romao.matheus.dataglove.connection
 
-import com.facebook.stetho.okhttp3.StethoInterceptor
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import romao.matheus.dataglove.interfaces.RetrofitService
@@ -12,15 +10,9 @@ import romao.matheus.dataglove.interfaces.RetrofitService
 
 class RetrofitConfig {
     private fun getRetrofit(baseUrl: String): Retrofit {
-
-        val okHttpClient = OkHttpClient.Builder()
-                .addNetworkInterceptor(StethoInterceptor())
-                .build()
-
         return Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
                 .build()
     }
 

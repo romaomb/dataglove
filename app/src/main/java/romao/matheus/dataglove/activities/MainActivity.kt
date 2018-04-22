@@ -15,10 +15,8 @@ class MainActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         setSupportActionBar(toolbar)
         supportActionBar?.title = getString(R.string.app_name)
-
         setTabs()
     }
 
@@ -32,15 +30,18 @@ class MainActivity : AppCompatActivity() {
             R.id.ativado -> {
                 if (!item.isChecked) {
                     item.isChecked = true
-                    SimulationFragment.transmission = true
-                    //volley!!.getJSON()
+                    if (!SimulationFragment.keepTransmission) {
+                        SimulationFragment.keepTransmission = true
+                        val fragment = supportFragmentManager.fragments[0] as SimulationFragment
+                        fragment.startRetrofitCall()
+                    }
                 }
                 return true
             }
             R.id.pausado -> {
                 if (!item.isChecked) {
                     item.isChecked = true
-                    SimulationFragment.transmission = false
+                    SimulationFragment.keepTransmission = false
                 }
                 return true
             }

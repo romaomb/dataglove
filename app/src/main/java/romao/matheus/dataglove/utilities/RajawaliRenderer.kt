@@ -17,7 +17,7 @@ import org.rajawali3d.view.SurfaceView
 import romao.matheus.dataglove.R
 import romao.matheus.dataglove.fragments.SimulationFragment
 
-internal class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Renderer(context) {
+class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Renderer(context) {
 
     private var hand: Object3D? = null
     private val mcp = ArrayList<Object3D>()
@@ -86,7 +86,7 @@ internal class RajawaliRenderer(context: Context, private val surface: SurfaceVi
         thumb.add(newPhalanx(thumb[4], thumbLength / 2, -(thumbLength / 4 + 1)))
     }
 
-    fun newPhalanx(joint: Object3D, length: Float, distance: Float): Object3D {
+    private fun newPhalanx(joint: Object3D, length: Float, distance: Float): Object3D {
         val bone = Cylinder(length, 1f, 24, 24, true, true, true)
         bone.setPosition(0.0, 0.0, distance.toDouble())
         bone.isDoubleSided = true
@@ -96,7 +96,7 @@ internal class RajawaliRenderer(context: Context, private val surface: SurfaceVi
         return bone
     }
 
-    fun newJoint(phalanxes: Object3D, distanceX: Float, distanceZ: Float): Object3D {
+    private fun newJoint(phalanxes: Object3D, distanceX: Float, distanceZ: Float): Object3D {
         val joint = Sphere(1f, 24, 24)
         joint.setPosition(distanceX.toDouble(), 0.0, distanceZ.toDouble())
         joint.material = materialJoints
@@ -105,7 +105,7 @@ internal class RajawaliRenderer(context: Context, private val surface: SurfaceVi
         return joint
     }
 
-    fun cameraDefault() {
+    private fun cameraDefault() {
         val arcball = ArcballCamera(mContext, surface)
         arcball.setPosition(75.0, 40.0, -30.0)
         arcball.farPlane = 1000.0
@@ -116,7 +116,7 @@ internal class RajawaliRenderer(context: Context, private val surface: SurfaceVi
         super.onRender(ellapsedRealtime, deltaTime)
         if (SimulationFragment.sensor.size > 0) {
             for (i in 0..14) {
-                handJoints[i].setRotation(Vector3.Axis.X, SimulationFragment.sensor[i].angle)
+                handJoints[i].setRotation(Vector3.Axis.X, -SimulationFragment.sensor[i].angle)
             }
         }
         //hand.setRotation(Vector3.Axis.X, angles[15]);
