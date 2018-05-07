@@ -15,7 +15,7 @@ import org.rajawali3d.primitives.Sphere
 import org.rajawali3d.renderer.Renderer
 import org.rajawali3d.view.SurfaceView
 import romao.matheus.dataglove.R
-import romao.matheus.dataglove.fragments.SimulationFragment
+import romao.matheus.dataglove.scenes.simulation.SimulationFragment
 
 class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Renderer(context) {
 
@@ -112,10 +112,24 @@ class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Ren
         currentScene.replaceAndSwitchCamera(currentCamera, arcball)
     }
 
+    /*
+    MCP Index: 0, 3, 6, 9, 12
+    PIP Index: 1, 4, 7, 10, 13
+    DIP Index: 2, 5, 8, 11, 14
+     */
+
     override fun onRender(ellapsedRealtime: Long, deltaTime: Double) {
         super.onRender(ellapsedRealtime, deltaTime)
+
+        val sensorList = SimulationFragment.sensorList
+
         if (SimulationFragment.sensorList.sensors.isNotEmpty()) {
             for (i in 0..14) {
+                if (i != 0 && i != 3 && i != 6 && i != 9 && i != 12) { // Doesn't enter for MCP
+                    if (sensorList.sensors[i-1].angle > 0) { //Goin down
+
+                    }
+                }
                 handJoints[i].setRotation(Vector3.Axis.X, -SimulationFragment.sensorList.sensors[i].angle)
             }
         }

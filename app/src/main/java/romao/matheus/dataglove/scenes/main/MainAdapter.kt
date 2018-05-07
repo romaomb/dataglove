@@ -1,12 +1,12 @@
-package romao.matheus.dataglove.adapters
+package romao.matheus.dataglove.scenes.main
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import romao.matheus.dataglove.fragments.SimulationFragment
-import romao.matheus.dataglove.fragments.TableFragment
+import romao.matheus.dataglove.scenes.simulation.SimulationFragment
+import romao.matheus.dataglove.scenes.table.TableFragment
 
-class TabAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
+class MainAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
     private val fragmentList = ArrayList<Fragment>()
 
     init {

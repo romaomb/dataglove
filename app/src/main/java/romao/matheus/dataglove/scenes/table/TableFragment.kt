@@ -1,4 +1,4 @@
-package romao.matheus.dataglove.fragments
+package romao.matheus.dataglove.scenes.table
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -23,20 +23,24 @@ class TableFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tableList.add(textView15)
-        tableList.add(textView14)
-        tableList.add(textView13)
-        tableList.add(textView12)
-        tableList.add(textView11)
-        tableList.add(textView10)
-        tableList.add(textView9)
-        tableList.add(textView8)
-        tableList.add(textView7)
-        tableList.add(textView6)
-        tableList.add(textView5)
-        tableList.add(textView4)
-        tableList.add(textView3)
-        tableList.add(textView2)
-        tableList.add(textView1)
+        tableList.add(mcfLittleTXT)
+        tableList.add(ifpLittleTXT)
+        tableList.add(ifdLittleTXT)
+
+        tableList.add(mcfRingTXT)
+        tableList.add(ifpRingTXT)
+        tableList.add(ifdRingTXT)
+
+        tableList.add(mcfMiddleTXT)
+        tableList.add(ifpMiddleTXT)
+        tableList.add(ifdMiddleTXT)
+
+        tableList.add(mcfIndexTXT)
+        tableList.add(ifpIndexTXT)
+        tableList.add(ifdIndexTXT)
+
+        tableList.add(cmcThumbTXT)
+        tableList.add(mcfThumbTXT)
+        tableList.add(ifThumbTXT)
     }
 }
