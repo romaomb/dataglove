@@ -1,44 +1,54 @@
 # DataGlove
-This is where the fun begins!
 
-I made this really quick to get my bachelor degree (and had to present on 04/12/2017), but now I am really looking to improve my little child.
+This project was made really fast, so I could get my bachelor degree on Computer Engineering. Now I'm looking forward to improve it.
 
-(I'm going to write a better description here, asap)
+There's no stable version yet, to see the current development status go to [develop branch](https://github.com/matheusromao/dataglove-android/tree/develop).
 
-There she is: 
+## Abstract
 
-![DataGlove on the table](https://image.ibb.co/cK4sjn/Data_Glove.jpg)
+The follow up of rehabilitation sessions for the range of movement of the hand is performed through a [goniometer](http://www.berktree.com/assets/images/default/stainless-steel-finger-goniometers-short-finger-goniometer-measures-3--9cm-long-model-926611.jpg). However, the use of this instrument for angular measurement of finger joints is time-consuming and subject to many errors. Therefore, this work presents a dataglove that dynamically provides the extension and flexion angles of the [metacarpophalangeal, interphalangeal proximal and distal fingers joints](http://www.assh.org/portals/1/Images/anatomy_images/Joints-Thumb-Inter.jpg?ver=2014-02-03-164205-753). Using a Raspberry Pi 3 B, 16 inertial sensors and a battery, this dataglove provides its readings via Wi-Fi, which can be viewed in a 3D hand model or in a table format through an Android application.
 
 ## Hardware
 
 * Raspberry Pi 3 model B
 * 16 MPU6050 (on GY-521 breadboard)
 * RPi PowerPack V2.0 (5 V, 1.8 A)
-* Litte board that I created for I2C bus
+* I2C bus board
+* "Traffic Lights" board
+
+## Structure
+
+* Lycra
+* Velcro
 * 3D printed case
-* Really dumb "Traffic Lights" board
-* (Obviously not a hardware) Homemade Lycra glove
 
-## Backend: Python
+## [Backend](https://github.com/matheusromao/dataglove-api) (Python)
 
-Yeah, I chose to make this on Python and I don't regreat!
+* [Autobahn|Python](https://github.com/crossbario/autobahn-python) to setup a WebSocket and send data from the sensors
+* [Numpy](https://github.com/numpy/numpy) to handle approximations 
+* SMBus to get MPU6050 data (from http://blog.bitify.co.uk/2013/11/reading-data-from-mpu-6050-on-raspberry.html)
+* hostapd, dnsmasq and iptables to [set up the Raspberry as an Access Point](https://github.com/raspberrypi/documentation/blob/master/configuration/wireless/access-point.md)
 
-* SMBus to get sensor data
-* hostapd, dnsmasq and IPTABLES (HELL YEAH!) to set up the Raspberry as an Access Point
-* web.py to run the "server-side stuff" 
+## Android (Kotlin)
 
-## Client-side (not frontend): JAVA Android
+* [Rajawali](https://github.com/Rajawali/Rajawali) to make a 3D hand skeleton model
+* [okHttp3](https://github.com/square/okhttp) to handle WebSocket connection
+* [Gson](https://github.com/google/gson) to deserialize JSON into a data class model
+* MVP Architecture
 
-Did on JAVA for Android and now I DO REGREAT IT a lot.
+# Android - TODO
 
-* Volley to get data
-* Rajawali to make a 3D hand skeleton model
-* A bunch of TextViews to make a table
+- [x] Use ViewPager to setup fragments
+- [x] Replace Volley with Retrofit (did not work well)
+- [x] MVP Architecture
+- [x] Convert JAVA to Kotlin
+- [x] Replace Retrofit with okHttp3
+- [x] Update Table Layout
+- [ ] Fix joints rotation bug
+- [ ] Fix camera rotation bug
+- [ ] Make a 3D texture for the hand model
+- [ ] Improve interface
 
-# On the road
-
-* Convert JAVA code to Kotlin
-* Fix some bugs
-* Improve speed
+![DataGlove on the table](https://image.ibb.co/cK4sjn/Data_Glove.jpg)
 
 Romão 
