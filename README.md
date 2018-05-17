@@ -1,8 +1,6 @@
 # DataGlove
 
-This project was made really fast, so I could get my bachelor degree on Computer Engineering. Now I'm looking forward to improve it.
-
-There's no stable version yet, to see the current development status go to [develop branch](https://github.com/matheusromao/dataglove-android/tree/develop).
+This project was made really fast, so I could get my bachelor degree on Computer Engineering. Now I'm looking forward to improve it. There's no stable version yet, to see the current development status go to [develop branch](https://github.com/matheusromao/dataglove-android/tree/develop).
 
 ## Abstract
 
