@@ -36,7 +36,7 @@ The follow up of rehabilitation sessions for the range of movement of the hand i
 * [Gson](https://github.com/google/gson) to deserialize JSON into a data class model
 * MVP Architecture
 
-# Android - TODO
+## Android - TODO
 
 - [x] Use ViewPager to setup fragments
 - [x] Replace Volley with Retrofit (did not work well)
