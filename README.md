@@ -49,5 +49,3 @@ The follow up of rehabilitation sessions for the range of movement of the hand i
 - [ ] Make a 3D texture for the hand model
 
 ![DataGlove on the table](https://image.ibb.co/cK4sjn/Data_Glove.jpg)
-
-Romão 
