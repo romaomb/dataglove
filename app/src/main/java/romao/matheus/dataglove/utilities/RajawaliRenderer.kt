@@ -33,6 +33,7 @@ class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Ren
 
     public override fun initScene() {
         cameraDefault()
+
         try {
             currentScene.setSkybox(R.drawable.posx2, R.drawable.negx2, R.drawable.posy2, R.drawable.negy2, R.drawable.posz2, R.drawable.negz2)
         } catch (e: ATexture.TextureException) {
@@ -107,7 +108,8 @@ class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Ren
 
     private fun cameraDefault() {
         val arcball = ArcballCamera(mContext, surface)
-        arcball.setPosition(75.0, 40.0, -30.0)
+        arcball.setPosition(95.0, 40.0, -30.0)
+
         arcball.farPlane = 1000.0
         currentScene.replaceAndSwitchCamera(currentCamera, arcball)
     }
@@ -125,11 +127,6 @@ class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Ren
 
         if (SimulationFragment.sensorList.sensors.isNotEmpty()) {
             for (i in 0..14) {
-                if (i != 0 && i != 3 && i != 6 && i != 9 && i != 12) { // Doesn't enter for MCP
-                    if (sensorList.sensors[i-1].angle > 0) { //Goin down
-
-                    }
-                }
                 handJoints[i].setRotation(Vector3.Axis.X, -SimulationFragment.sensorList.sensors[i].angle)
             }
         }

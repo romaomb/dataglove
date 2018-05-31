@@ -6,7 +6,7 @@
 
     <!-- TableFragment -->
     <string name="tab_label_table">Tabela</string>
-    <string name="label_title_measurement">Medidas Angulares (Graus)</string>
+    <string name="label_title_measurement">Medidas Angulares</string>
     <string name="label_column_finger">Dedo</string>
     <string name="label_column_mcf">MCF</string>
     <string name="label_column_ifp">IFP</string>

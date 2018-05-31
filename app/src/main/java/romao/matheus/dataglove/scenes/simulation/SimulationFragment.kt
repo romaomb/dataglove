@@ -43,6 +43,21 @@ class SimulationFragment : Fragment(), WebSocketInterface {
         return mFrameLayout
     }
 
+    override fun onPause() {
+        client.disconnect()
+        super.onPause()
+    }
+
+    override fun onStop() {
+        client.disconnect()
+        super.onStop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        client.connect(this)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater!!.inflate(R.menu.menu_main, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -89,19 +104,8 @@ class SimulationFragment : Fragment(), WebSocketInterface {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onResume() {
-        super.onResume()
-        client.connect(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        client.disconnect()
-        client.resetHandlers()
-    }
-
     private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun requestNewData() {
@@ -111,7 +115,8 @@ class SimulationFragment : Fragment(), WebSocketInterface {
     override fun onNewMessage(message: String) {
         sensorList = GsonBuilder().create().fromJson(message, SensorList::class.java)
         TableFragment.tableList.forEachIndexed { index, it ->
-            it.text = sensorList.sensors[index].angle.toString()
+            val degrees = "${sensorList.sensors[index].angle.toInt().toString()} °"
+            it.text = degrees
         }
         requestNewData()
     }
