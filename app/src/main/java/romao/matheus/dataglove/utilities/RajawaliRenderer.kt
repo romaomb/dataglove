@@ -15,7 +15,7 @@ import org.rajawali3d.primitives.Sphere
 import org.rajawali3d.renderer.Renderer
 import org.rajawali3d.view.SurfaceView
 import romao.matheus.dataglove.R
-import romao.matheus.dataglove.fragments.SimulationFragment
+import romao.matheus.dataglove.scenes.simulation.SimulationFragment
 
 class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Renderer(context) {
 
@@ -33,6 +33,7 @@ class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Ren
 
     public override fun initScene() {
         cameraDefault()
+
         try {
             currentScene.setSkybox(R.drawable.posx2, R.drawable.negx2, R.drawable.posy2, R.drawable.negy2, R.drawable.posz2, R.drawable.negz2)
         } catch (e: ATexture.TextureException) {
@@ -107,13 +108,23 @@ class RajawaliRenderer(context: Context, private val surface: SurfaceView) : Ren
 
     private fun cameraDefault() {
         val arcball = ArcballCamera(mContext, surface)
-        arcball.setPosition(75.0, 40.0, -30.0)
+        arcball.setPosition(95.0, 40.0, -30.0)
+
         arcball.farPlane = 1000.0
         currentScene.replaceAndSwitchCamera(currentCamera, arcball)
     }
 
+    /*
+    MCP Index: 0, 3, 6, 9, 12
+    PIP Index: 1, 4, 7, 10, 13
+    DIP Index: 2, 5, 8, 11, 14
+     */
+
     override fun onRender(ellapsedRealtime: Long, deltaTime: Double) {
         super.onRender(ellapsedRealtime, deltaTime)
+
+        val sensorList = SimulationFragment.sensorList
+
         if (SimulationFragment.sensorList.sensors.isNotEmpty()) {
             for (i in 0..14) {
                 handJoints[i].setRotation(Vector3.Axis.X, -SimulationFragment.sensorList.sensors[i].angle)

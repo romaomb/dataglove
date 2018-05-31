@@ -28,10 +28,15 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'commons-io:commons-io:2.5'
+
+    //Network
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    implementation 'org.rajawali3d:rajawali:1.1.970'
     implementation 'com.google.code.gson:gson:2.8.2'
 
+    //Rendering
+    implementation 'org.rajawali3d:rajawali:1.1.970'
+
+    //Tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

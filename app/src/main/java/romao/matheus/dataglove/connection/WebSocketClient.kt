@@ -1,6 +1,7 @@
 package romao.matheus.dataglove.connection
 
 import android.os.Handler
+import android.os.Message
 import okhttp3.*
 import java.util.concurrent.TimeUnit
 
@@ -18,6 +19,38 @@ class WebSocketClient(private val mServerUrl: String) {
             .readTimeout(3, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .build()
+
+    fun connect(listener: WebSocketInterface) {
+        val request = Request.Builder()
+                .url(mServerUrl)
+                .build()
+        webSocket = client.newWebSocket(request, SocketListener())
+        this.listener = listener
+        messageHandler = Handler { msg ->
+            this.listener!!.onNewMessage(msg.obj as String)
+            true
+        }
+        statusHandler = Handler { msg ->
+            this.listener!!.onStatusChange(msg.obj as WebSocketStatus)
+            true
+        }
+    }
+
+    fun disconnect() {
+        val message = statusHandler!!.obtainMessage(0, WebSocketStatus.DISCONNECTED)
+        statusHandler!!.sendMessage(message)
+        webSocket!!.cancel()
+    }
+
+    fun resetHandlers() {
+        listener = null
+        messageHandler!!.removeCallbacksAndMessages(null)
+        statusHandler!!.removeCallbacksAndMessages(null)
+    }
+
+    fun sendMessage(message: String) {
+        webSocket!!.send(message)
+    }
 
     private inner class SocketListener : WebSocketListener() {
         override fun onOpen(webSocket: WebSocket?, response: Response?) {
@@ -38,32 +71,5 @@ class WebSocketClient(private val mServerUrl: String) {
         override fun onFailure(webSocket: WebSocket?, t: Throwable?, response: Response?) {
             disconnect()
         }
-    }
-
-    fun connect(listener: WebSocketInterface) {
-        val request = Request.Builder()
-                .url(mServerUrl)
-                .build()
-        webSocket = client.newWebSocket(request, SocketListener())
-        this.listener = listener
-        messageHandler = Handler { msg ->
-            this.listener!!.onNewMessage(msg.obj as String)
-            true
-        }
-        statusHandler = Handler { msg ->
-            this.listener!!.onStatusChange(msg.obj as WebSocketStatus)
-            true
-        }
-    }
-
-    fun disconnect() {
-        webSocket!!.cancel()
-        listener = null
-        messageHandler!!.removeCallbacksAndMessages(null)
-        statusHandler!!.removeCallbacksAndMessages(null)
-    }
-
-    fun sendMessage(message: String) {
-        webSocket!!.send(message)
     }
 }

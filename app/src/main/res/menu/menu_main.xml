@@ -8,8 +8,7 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/ativado"
-            android:title="Ativada"
-            android:checked="true"/>
+            android:title="Ativada" />
         <item android:id="@+id/pausado"
             android:title="Pausada" />
     </group>
