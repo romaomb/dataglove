@@ -1,6 +1,6 @@
 # DataGlove
 
-This project was made really fast, so I could get my bachelor degree on Computer Engineering. Now I'm looking forward to improve it. There's no stable version yet, to see the current development status go to [develop branch](https://github.com/matheusromao/dataglove-android/tree/develop).
+This project was made in three months, so I could get my bachelor degree on Computer Engineering. Now I'm looking forward to improve it. There's no stable version yet, to see the current development status go to [develop branch](https://github.com/matheusromao/dataglove-android/tree/develop).
 
 ## Abstract
 
@@ -14,7 +14,7 @@ The follow up of rehabilitation sessions for the range of movement of the hand i
 * I2C bus board
 * "Traffic Lights" board
 
-## Structure
+## Glove Materials
 
 * Lycra
 * Velcro
@@ -22,30 +22,31 @@ The follow up of rehabilitation sessions for the range of movement of the hand i
 
 ## [Backend](https://github.com/matheusromao/dataglove-api) (Python)
 
-* [Autobahn|Python](https://github.com/crossbario/autobahn-python) to setup a WebSocket and send data from the sensors
-* [Numpy](https://github.com/numpy/numpy) to handle approximations 
-* SMBus to get MPU6050 data (from http://blog.bitify.co.uk/2013/11/reading-data-from-mpu-6050-on-raspberry.html)
-* hostapd, dnsmasq and iptables to [set up the Raspberry as an Access Point](https://github.com/raspberrypi/documentation/blob/master/configuration/wireless/access-point.md)
+* [Autobahn|Python](https://github.com/crossbario/autobahn-python) to setup a WebSocket and send data from the sensors.
+* [Numpy](https://github.com/numpy/numpy) to handle calculations. 
+* SMBus to get MPU6050 data (credits to [Andrew Birkett](http://blog.bitify.co.uk/2013/11/reading-data-from-mpu-6050-on-raspberry.html)).
+* hostapd, dnsmasq and iptables to [set up the Raspberry as an Access Point](https://github.com/raspberrypi/documentation/blob/master/configuration/wireless/access-point.md).
 
-## Android (Kotlin)
+## Mobile (Kotlin - Android)
 
-* [Rajawali](https://github.com/Rajawali/Rajawali) to make a 3D hand skeleton model
-* [okHttp3](https://github.com/square/okhttp) to handle WebSocket connection
-* [Gson](https://github.com/google/gson) to deserialize JSON into a data class model
-* MVP Architecture
+* [Rajawali](https://github.com/Rajawali/Rajawali) to make a 3D hand skeleton model.
+* [okHttp3](https://github.com/square/okhttp) to handle WebSocket connection.
+* [Gson](https://github.com/google/gson) to deserialize JSON into a data class model.
+* MVP Architecture.
 
-## Android - TODO
+## TODO
 
-- [x] Use ViewPager to setup fragments
-- [x] Replace Volley with Retrofit (did not work well)
-- [x] MVP Architecture
 - [x] Convert JAVA to Kotlin
+- [x] Use ViewPager to setup fragments
+- [x] Replace Volley with Retrofit (did not work really well)
+- [x] Replace web.py with Flask (it was ok, but did not improved speed as expected)
+- [x] Replace Flask with Autobahn|Python on Twisted
+- [x] Android MVP Architecture
 - [x] Replace Retrofit with okHttp3
 - [x] Update Table Layout
 - [ ] Fix joints rotation bug
 - [ ] Fix camera rotation bug
 - [ ] Make a 3D texture for the hand model
-- [ ] Improve interface
 
 ![DataGlove on the table](https://image.ibb.co/cK4sjn/Data_Glove.jpg)
 
