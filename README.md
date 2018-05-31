@@ -20,7 +20,7 @@ The follow up of rehabilitation sessions for the range of movement of the hand i
 * Velcro
 * 3D printed case
 
-## [Backend](https://github.com/matheusromao/dataglove-api) (Python)
+## Backend (Python)
 
 * [Autobahn|Python](https://github.com/crossbario/autobahn-python) to setup a WebSocket and send data from the sensors.
 * [Numpy](https://github.com/numpy/numpy) to handle calculations. 
